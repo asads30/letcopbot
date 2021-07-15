@@ -163,7 +163,8 @@ bot.on("message", (msg) => {
                if (error) {
                   console.log(error);
                } else {
-                  if (results[0].sendMsg == null) {
+                  if (results.length === 0) {
+                  } else if (results[0].sendMsg == null) {
                      const sql =
                         "UPDATE users SET sendMsg = 'text1' WHERE userid = ?";
                      connection.query(sql, userId, function (err, results) {});
