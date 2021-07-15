@@ -486,7 +486,8 @@ bot.onText(/\/send/, (msg) => {
          if (error) {
             console.log("Ошибка при поиске в users", error);
          } else {
-            if (results[0].role == 99) {
+            if (results.length === 0) {
+            } else if (results[0].role == 99) {
                bot.sendMessage(helpers.getChatId(msg), text, {
                   reply_markup: {
                      resize_keyboard: true,
