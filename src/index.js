@@ -352,7 +352,7 @@ bot.on("message", (msg) => {
                   else {
                   }
                });
-            } else if (results[0].sendMsg == "text2") {
+            } else if (results[0].sendMsg == "send1") {
                connection.query(
                   "SELECT * FROM users WHERE role = 1 AND prof = 1 AND push = 'true'",
                   function (err, result, fields) {
@@ -362,7 +362,90 @@ bot.on("message", (msg) => {
                      }
                   }
                );
-
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send2") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 2 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send3") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 3 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send4") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 4 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send5") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 5 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send6") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 6 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
+            } else if (results[0].sendMsg == "send7") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 1 AND prof = 7 AND push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
                const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
                connection.query(sql, userId, function (err, results) {
                   if (err) console.log(err);
@@ -391,37 +474,37 @@ bot.onText(/\/send/, (msg) => {
                         [
                            {
                               text: "Сайтолог",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac1",
                            },
                            {
                               text: "Веб-дизайнер",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac2",
                            },
                         ],
                         [
                            {
                               text: "Граф. Дизайнер",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac3",
                            },
                            {
                               text: "Таргетолог",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac4",
                            },
                         ],
                         [
                            {
                               text: "Программист",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac5",
                            },
                            {
                               text: "СММ специалист",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac6",
                            },
                         ],
                         [
                            {
                               text: "Остальные/Другие",
-                              callback_data: "sendVac",
+                              callback_data: "sendVac7",
                            },
                         ],
                      ],
@@ -452,33 +535,33 @@ bot.on("callback_query", (callbackQuery) => {
                      },
                      {
                         text: "Веб-дизайнер",
-                        callback_data: "prof1",
+                        callback_data: "prof2",
                      },
                   ],
                   [
                      {
                         text: "Граф. Дизайнер",
-                        callback_data: "prof1",
+                        callback_data: "prof3",
                      },
                      {
                         text: "Таргетолог",
-                        callback_data: "prof1",
+                        callback_data: "prof4",
                      },
                   ],
                   [
                      {
                         text: "Программист",
-                        callback_data: "prof1",
+                        callback_data: "prof5",
                      },
                      {
                         text: "СММ специалист",
-                        callback_data: "prof1",
+                        callback_data: "prof6",
                      },
                   ],
                   [
                      {
                         text: "Остальные/Другие",
-                        callback_data: "prof1",
+                        callback_data: "prof7",
                      },
                   ],
                ],
@@ -558,6 +641,186 @@ bot.on("callback_query", (callbackQuery) => {
                   console.log(userDbData, "6");
                } else {
                   const sql = "UPDATE users SET prof = '1' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof2") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '2' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof3") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '3' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof4") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '4' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof5") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '5' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof6") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '6' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof72") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '7' WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
                      if (err) console.log(err, "5");
                      else console.log("Данные добавлены");
@@ -651,7 +914,7 @@ bot.on("callback_query", (callbackQuery) => {
             }
          }
       );
-   } else if (msgId === "sendVac") {
+   } else if (msgId === "sendVac1") {
       connection.query(
          "SELECT * FROM users WHERE userid = ?",
          [userId],
@@ -661,7 +924,133 @@ bot.on("callback_query", (callbackQuery) => {
             } else {
                if (results[0].sendMsg == null) {
                   const sql =
-                     "UPDATE users SET sendMsg = 'text2' WHERE userid = ?";
+                     "UPDATE users SET sendMsg = 'send1' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac2") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send2' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac3") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send3' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac4") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send4' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac5") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send5' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac6") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send6' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendVac7") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'send7' WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
                      if (err) console.log(err, "5");
                      else console.log("Данные добавлены 2");
