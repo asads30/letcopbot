@@ -185,6 +185,26 @@ bot.on("message", (msg) => {
          );
          break;
       case kb.home.change:
+         connection.query(
+            "SELECT * FROM users WHERE userid = ?",
+            [userId],
+            (error, results) => {
+               if (error) {
+                  console.log(error, "4");
+               } else {
+                  if (results.length === 0) {
+                     userDbData = results[0];
+                     console.log(userDbData, "6");
+                  } else {
+                     const sql = "UPDATE users SET role = '1' WHERE userid = ?";
+                     connection.query(sql, userId, function (err, results) {
+                        if (err) console.log(err, "5");
+                        else console.log("Данные добавлены");
+                     });
+                  }
+               }
+            }
+         );
          bot.sendMessage(chatId, `Выберите профессию:`, {
             reply_markup: {
                resize_keyboard: true,
