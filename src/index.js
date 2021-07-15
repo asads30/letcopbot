@@ -195,7 +195,7 @@ bot.on("message", (msg) => {
                   if (results.length === 0) {
                      userDbData = results[0];
                      console.log(userDbData, "6");
-                  } else {
+                  } else if (results[0].role == 2) {
                      const sql = "UPDATE users SET role = '1' WHERE userid = ?";
                      connection.query(sql, userId, function (err, results) {
                         if (err) console.log(err, "5");
