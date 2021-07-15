@@ -125,7 +125,7 @@ bot.onText(/\/start/, (msg) => {
                bot.sendMessage(msg.chat.id, "Основное меню:", {
                   reply_markup: {
                      resize_keyboard: true,
-                     keyboard: keyboard.admin,
+                     keyboard: keyboard.home,
                   },
                });
             }
