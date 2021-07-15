@@ -1,4 +1,4 @@
 module.exports = {
-   TOKEN: "1873160991:AAH5_B1IZyJQEg36FIwaDs2FOBQnylcSifA",
+   TOKEN: "1873160991:AAHLzZxsNRIoN4NoaDPdk3QFxEiSVA_ubIo",
    // DB_URL: 'mongodb://localhost/wfcinema'
 };
