@@ -301,7 +301,7 @@ bot.on("message", (msg) => {
                                 },
                             });
                         } else if (results[0].push == "true") {
-                            bot.sendMessage(msg.chat.id, "Выберите профессию:", {
+                            bot.sendMessage(msg.chat.id, "Уведомления:", {
                                 reply_markup: {
                                     resize_keyboard: true,
                                     inline_keyboard: [
@@ -807,7 +807,7 @@ bot.on("callback_query", (callbackQuery) => {
     } else if (msgId === "push1") {
         bot.answerCallbackQuery(callbackQuery.id, `Уведомления включены`);
         bot.answerCallbackQuery(callbackQuery.id).then(() =>
-            bot.sendMessage(msg.chat.id, "Выберите профессию:", {
+            bot.sendMessage(msg.chat.id, "Уведомления:", {
                 reply_markup: {
                     resize_keyboard: true,
                     inline_keyboard: [
@@ -847,7 +847,7 @@ bot.on("callback_query", (callbackQuery) => {
     } else if (msgId === "push2") {
         bot.answerCallbackQuery(callbackQuery.id, `Уведомления отключены`);
         bot.answerCallbackQuery(callbackQuery.id).then(() =>
-            bot.sendMessage(msg.chat.id, "Выберите профессию:", {
+            bot.sendMessage(msg.chat.id, "Уведомления:", {
                 reply_markup: {
                     resize_keyboard: true,
                     inline_keyboard: [
