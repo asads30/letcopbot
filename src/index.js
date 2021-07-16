@@ -381,6 +381,7 @@ bot.on("message", (msg) => {
                } else {
                   bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`);
                   bot.sendMessage(admin2, `Заявка на вакансию: ${msg.text}`);
+                  bot.sendMessage(userId, `☑️ Ваш заказ оправлен на модерацию`);
                   const sql =
                      "UPDATE users SET sendMsg = null WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
