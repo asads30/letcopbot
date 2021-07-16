@@ -43,6 +43,7 @@ handleDisconnect();
 
 let userDbData = {};
 const admin = 386567097;
+const admin2 = 680676094;
 
 bot.onText(/\/start/, (msg) => {
    let userId = msg.from.id;
@@ -377,6 +378,7 @@ bot.on("message", (msg) => {
                   console.log("Заявка на вакансию: 🙋‍♂️ Я исполнитель");
                } else {
                   bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`);
+                  bot.sendMessage(admin2, `Заявка на вакансию: ${msg.text}`);
                   const sql =
                      "UPDATE users SET sendMsg = null WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
