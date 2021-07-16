@@ -642,6 +642,36 @@ bot.onText(/\/news/, (msg) => {
    );
 });
 
+bot.onText(/\/stats/, (msg) => {
+   let userId = msg.from.id;
+   connection.query(
+      "SELECT * FROM users WHERE userid = ?",
+      [helpers.getUserId(msg)],
+      (error, results) => {
+         if (error) {
+            console.log("Ошибка при поиске в users", error);
+         } else {
+            if (results.length === 0) {
+            } else if (results[0].role == 99) {
+               connection.query("SELECT * FROM users", (error, results2) => {
+                  if (error) {
+                     console.log(error);
+                  } else {
+                     let allUser = results2.length;
+                     bot.sendMessage(
+                        helpers.getChatId(msg),
+                        `Кол-во пользователей: ${allUser}`
+                     );
+                  }
+               });
+            } else {
+               console.log("Не размещу");
+            }
+         }
+      }
+   );
+});
+
 bot.on("callback_query", (callbackQuery) => {
    const msg = callbackQuery.message;
    const userId = callbackQuery.from.id;
