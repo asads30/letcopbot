@@ -258,37 +258,37 @@ bot.on("message", (msg) => {
                   [
                      {
                         text: "Сайтолог",
-                        callback_data: "prof1",
+                        callback_data: "prof1-1",
                      },
                      {
                         text: "Веб-дизайнер",
-                        callback_data: "prof2",
+                        callback_data: "prof2-1",
                      },
                   ],
                   [
                      {
                         text: "Граф. Дизайнер",
-                        callback_data: "prof3",
+                        callback_data: "prof3-1",
                      },
                      {
                         text: "Таргетолог",
-                        callback_data: "prof4",
+                        callback_data: "prof4-1",
                      },
                   ],
                   [
                      {
                         text: "Программист",
-                        callback_data: "prof5",
+                        callback_data: "prof5-1",
                      },
                      {
                         text: "СММ специалист",
-                        callback_data: "prof6",
+                        callback_data: "prof6-1",
                      },
                   ],
                   [
                      {
                         text: "Остальные/Другие",
-                        callback_data: "prof7",
+                        callback_data: "prof7-1",
                      },
                   ],
                ],
@@ -772,6 +772,40 @@ bot.on("callback_query", (callbackQuery) => {
             }
          }
       );
+   } else if (msgId === "prof1-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: Cайтолог",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '1' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
    } else if (msgId === "prof2") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
          bot.sendMessage(msg.chat.id, "Основное меню:", {
@@ -780,6 +814,40 @@ bot.on("callback_query", (callbackQuery) => {
                keyboard: keyboard.freelancer,
             },
          })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '2' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof2-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: Веб-дизайнер",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
       );
       bot.deleteMessage(msg.chat.id, msg.message_id);
       connection.query(
@@ -832,6 +900,40 @@ bot.on("callback_query", (callbackQuery) => {
             }
          }
       );
+   } else if (msgId === "prof3-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: Графический дизайнер",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '3' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
    } else if (msgId === "prof4") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
          bot.sendMessage(msg.chat.id, "Основное меню:", {
@@ -840,6 +942,40 @@ bot.on("callback_query", (callbackQuery) => {
                keyboard: keyboard.freelancer,
             },
          })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '4' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof4-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: Таргетолог",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
       );
       bot.deleteMessage(msg.chat.id, msg.message_id);
       connection.query(
@@ -892,6 +1028,40 @@ bot.on("callback_query", (callbackQuery) => {
             }
          }
       );
+   } else if (msgId === "prof5-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: Программист",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '5' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
    } else if (msgId === "prof6") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
          bot.sendMessage(msg.chat.id, "Основное меню:", {
@@ -922,7 +1092,71 @@ bot.on("callback_query", (callbackQuery) => {
             }
          }
       );
-   } else if (msgId === "prof72") {
+   } else if (msgId === "prof6-1") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(
+            msg.chat.id,
+            "☑️ Вы успешно сменили профессию на: СММ специалист",
+            {
+               reply_markup: {
+                  resize_keyboard: true,
+                  keyboard: keyboard.freelancer,
+               },
+            }
+         )
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '6' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof7") {
+      bot.answerCallbackQuery(callbackQuery.id).then(() =>
+         bot.sendMessage(msg.chat.id, "Основное меню:", {
+            reply_markup: {
+               resize_keyboard: true,
+               keyboard: keyboard.freelancer,
+            },
+         })
+      );
+      bot.deleteMessage(msg.chat.id, msg.message_id);
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log(error, "4");
+            } else {
+               if (results.length === 0) {
+                  userDbData = results[0];
+                  console.log(userDbData, "6");
+               } else {
+                  const sql = "UPDATE users SET prof = '7' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены");
+                  });
+               }
+            }
+         }
+      );
+   } else if (msgId === "prof7-1") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
          bot.sendMessage(msg.chat.id, "Основное меню:", {
             reply_markup: {
