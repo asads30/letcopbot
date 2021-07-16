@@ -365,13 +365,26 @@ bot.on("message", (msg) => {
          } else {
             if (results.length === 0) {
             } else if (results[0].sendMsg == "text1") {
-               bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`);
-               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
-               connection.query(sql, userId, function (err, results) {
-                  if (err) console.log(err);
-                  else {
-                  }
-               });
+               if (msg.text == "🔔 Получать уведомления") {
+                  console.log("Заявка на вакансию: 🔔 Получать уведомления");
+               } else if (msg.text == "📩 Разместить заказ/вакансию") {
+                  console.log(
+                     "Заявка на вакансию: 📩 Разместить заказ/вакансию"
+                  );
+               } else if (msg.text == "🔄 Сменить профессию") {
+                  console.log("Заявка на вакансию: 👤 🔄 Сменить профессию");
+               } else if (msg.text == "🙋‍♂️ Я исполнитель") {
+                  console.log("Заявка на вакансию: 🙋‍♂️ Я исполнитель");
+               } else {
+                  bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`);
+                  const sql =
+                     "UPDATE users SET sendMsg = null WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err);
+                     else {
+                     }
+                  });
+               }
             } else if (results[0].sendMsg == "send1") {
                connection.query(
                   "SELECT * FROM users WHERE role = 1 AND prof = 1 AND push = 'true'",
