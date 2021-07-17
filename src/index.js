@@ -380,7 +380,7 @@ bot.on("message", (msg) => {
                   console.log("Заявка на вакансию: 👤 Служба поддержки");
                } else {
                   bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`, {
-                     parse_mode: "MarkdownV2",
+                     parse_mode: "HTML",
                   });
                   bot.sendMessage(admin2, `Заявка на вакансию: ${msg.text}`);
                   bot.sendMessage(userId, `☑️ Ваш заказ оправлен на модерацию`);
