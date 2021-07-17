@@ -677,6 +677,20 @@ bot.onText(/\/stats/, (msg) => {
                         }
                      }
                   );
+                  connection.query(
+                     "SELECT * FROM users WHERE role = 1",
+                     (error, results4) => {
+                        if (error) {
+                           console.log(error);
+                        } else {
+                           let allUser = results4.length;
+                           bot.sendMessage(
+                              helpers.getChatId(msg),
+                              `Кол-во фрилансеров: ${allUser}`
+                           );
+                        }
+                     }
+                  );
                });
             } else {
                console.log("Не размещу");
