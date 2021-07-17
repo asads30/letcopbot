@@ -494,7 +494,9 @@ bot.on("message", (msg) => {
                   function (err, result, fields) {
                      if (err) throw err;
                      for (var key in result) {
-                        bot.sendMessage(result[key].userid, msg.text);
+                        bot.sendMessage(result[key].userid, msg.text, {
+                           parse_mode: "Markdown",
+                        });
                      }
                   }
                );
