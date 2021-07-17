@@ -663,6 +663,20 @@ bot.onText(/\/stats/, (msg) => {
                         `Кол-во пользователей: ${allUser}`
                      );
                   }
+                  connection.query(
+                     "SELECT * FROM users WHERE role 2",
+                     (error, results3) => {
+                        if (error) {
+                           console.log(error);
+                        } else {
+                           let allUser = results3.length;
+                           bot.sendMessage(
+                              helpers.getChatId(msg),
+                              `Кол-во заказчиков: ${allUser}`
+                           );
+                        }
+                     }
+                  );
                });
             } else {
                console.log("Не размещу");
