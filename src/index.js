@@ -664,7 +664,7 @@ bot.onText(/\/stats/, (msg) => {
                      );
                   }
                   connection.query(
-                     "SELECT * FROM users WHERE role 2",
+                     "SELECT * FROM users WHERE role = 2",
                      (error, results3) => {
                         if (error) {
                            console.log(error);
