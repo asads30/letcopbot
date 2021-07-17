@@ -379,7 +379,9 @@ bot.on("message", (msg) => {
                } else if (msg.text == "👤 Служба поддержки") {
                   console.log("Заявка на вакансию: 👤 Служба поддержки");
                } else {
-                  bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`);
+                  bot.sendMessage(admin, `Заявка на вакансию: ${msg.text}`, {
+                     parse_mode: "Markdown",
+                  });
                   bot.sendMessage(admin2, `Заявка на вакансию: ${msg.text}`);
                   bot.sendMessage(userId, `☑️ Ваш заказ оправлен на модерацию`);
                   const sql =
