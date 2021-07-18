@@ -543,7 +543,7 @@ bot.on("message", (msg) => {
                      for (var key in result) {
                         bot.sendPhoto(
                            admin,
-                           `https://api.telegram.org/file/bot${TOKEN}/${msg.photo[0].file_id}`,
+                           `https://api.telegram.org/file/bot${config.TOKEN}/${msg.photo[0].file_id}`,
                            {
                               caption: msg.text,
                               parse_mode: "HTML",
