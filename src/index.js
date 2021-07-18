@@ -546,6 +546,12 @@ bot.on("message", (msg) => {
                connection.query(sql, userId, function (err, results) {
                   if (err) console.log(err);
                });
+               bot.sendMessage(msg.chat.id, "☑️ Вы успешно сменили профессию", {
+                  reply_markup: {
+                     resize_keyboard: true,
+                     keyboard: keyboard.freelancer,
+                  },
+               });
             }
          }
       }
