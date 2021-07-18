@@ -541,10 +541,14 @@ bot.on("message", (msg) => {
                   function (err, result, fields) {
                      if (err) throw err;
                      for (var key in result) {
-                        bot.sendPhoto(admin, msg.photo, {
-                           caption: msg.text,
-                           parse_mode: "HTML",
-                        });
+                        bot.sendPhoto(
+                           admin,
+                           `https://api.telegram.org/file/bot${TOKEN}/${msg.photo[0].file_id}`,
+                           {
+                              caption: msg.text,
+                              parse_mode: "HTML",
+                           }
+                        );
                      }
                   }
                );
