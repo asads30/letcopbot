@@ -532,6 +532,20 @@ bot.on("message", (msg) => {
                connection.query(sql, userId, function (err, results) {
                   if (err) console.log(err);
                });
+            } else if (results[0].sendMsg == "selectVac") {
+               connection.query(
+                  "SELECT * FROM users WHERE role = 99",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        bot.sendMessage(result[key].userid, msg.text);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
             }
          }
       }
@@ -1189,12 +1203,10 @@ bot.on("callback_query", (callbackQuery) => {
       );
    } else if (msgId === "prof7") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
-         bot.sendMessage(msg.chat.id, "Основное меню:", {
-            reply_markup: {
-               resize_keyboard: true,
-               keyboard: keyboard.freelancer,
-            },
-         })
+         bot.sendMessage(
+            msg.chat.id,
+            "📝 Впишите вашу профессию и в скором времени мы ее добавим"
+         )
       );
       bot.deleteMessage(msg.chat.id, msg.message_id);
       connection.query(
@@ -1208,7 +1220,8 @@ bot.on("callback_query", (callbackQuery) => {
                   userDbData = results[0];
                   console.log(userDbData, "6");
                } else {
-                  const sql = "UPDATE users SET prof = '7' WHERE userid = ?";
+                  const sql =
+                     "UPDATE users SET prof = '7', sendMsg = 'selectVac' WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
                      if (err) console.log(err, "5");
                      else console.log("Данные добавлены");
@@ -1219,12 +1232,10 @@ bot.on("callback_query", (callbackQuery) => {
       );
    } else if (msgId === "prof7-1") {
       bot.answerCallbackQuery(callbackQuery.id).then(() =>
-         bot.sendMessage(msg.chat.id, "Основное меню:", {
-            reply_markup: {
-               resize_keyboard: true,
-               keyboard: keyboard.freelancer,
-            },
-         })
+         bot.sendMessage(
+            msg.chat.id,
+            "📝 Впишите вашу профессию и в скором времени мы ее добавим"
+         )
       );
       bot.deleteMessage(msg.chat.id, msg.message_id);
       connection.query(
@@ -1238,7 +1249,8 @@ bot.on("callback_query", (callbackQuery) => {
                   userDbData = results[0];
                   console.log(userDbData, "6");
                } else {
-                  const sql = "UPDATE users SET prof = '7' WHERE userid = ?";
+                  const sql =
+                     "UPDATE users SET prof = '7', sendMsg = 'selectVac' WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
                      if (err) console.log(err, "5");
                      else console.log("Данные добавлены");
