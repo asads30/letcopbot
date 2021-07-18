@@ -537,11 +537,14 @@ bot.on("message", (msg) => {
                });
             } else if (results[0].sendMsg == "news4") {
                connection.query(
-                  "SELECT * FROM users WHERE push = 'true'",
+                  "SELECT * FROM users WHERE role = 99",
                   function (err, result, fields) {
                      if (err) throw err;
                      for (var key in result) {
-                        console.log(msg);
+                        bot.sendPhoto(admin, msg.photo, {
+                           caption: msg.text,
+                           parse_mode: "HTML",
+                        });
                      }
                   }
                );
