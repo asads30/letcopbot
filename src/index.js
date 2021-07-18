@@ -535,6 +535,20 @@ bot.on("message", (msg) => {
                connection.query(sql, userId, function (err, results) {
                   if (err) console.log(err);
                });
+            } else if (results[0].sendMsg == "news4") {
+               connection.query(
+                  "SELECT * FROM users WHERE push = 'true'",
+                  function (err, result, fields) {
+                     if (err) throw err;
+                     for (var key in result) {
+                        console.log(msg);
+                     }
+                  }
+               );
+               const sql = "UPDATE users SET sendMsg = null WHERE userid = ?";
+               connection.query(sql, userId, function (err, results) {
+                  if (err) console.log(err);
+               });
             } else if (results[0].sendMsg == "selectVac") {
                connection.query(
                   "SELECT * FROM users WHERE role = 99",
@@ -652,10 +666,22 @@ bot.onText(/\/news/, (msg) => {
                               text: "Заказчикам",
                               callback_data: "sendNews2",
                            },
+                           {
+                              text: "Всем пользователям",
+                              callback_data: "sendNews3",
+                           },
                         ],
                         [
                            {
-                              text: "Всем пользователям",
+                              text: "Фрилансерам фото",
+                              callback_data: "sendNews4",
+                           },
+                           {
+                              text: "Заказчикам фото",
+                              callback_data: "sendNews2",
+                           },
+                           {
+                              text: "Всем пользователям фото",
                               callback_data: "sendNews3",
                            },
                         ],
@@ -1556,6 +1582,27 @@ bot.on("callback_query", (callbackQuery) => {
                if (results[0].sendMsg == null) {
                   const sql =
                      "UPDATE users SET sendMsg = 'news3' WHERE userid = ?";
+                  connection.query(sql, userId, function (err, results) {
+                     if (err) console.log(err, "5");
+                     else console.log("Данные добавлены 2");
+                  });
+               } else {
+                  console.log("test2");
+               }
+            }
+         }
+      );
+   } else if (msgId === "sendNews4") {
+      connection.query(
+         "SELECT * FROM users WHERE userid = ?",
+         [userId],
+         (error, results) => {
+            if (error) {
+               console.log("Ошибка при поиске в users", error);
+            } else {
+               if (results[0].sendMsg == null) {
+                  const sql =
+                     "UPDATE users SET sendMsg = 'news4' WHERE userid = ?";
                   connection.query(sql, userId, function (err, results) {
                      if (err) console.log(err, "5");
                      else console.log("Данные добавлены 2");
